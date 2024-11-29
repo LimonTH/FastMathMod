@@ -8,8 +8,8 @@
 		"Elias"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"homepage": "https://github.com/ItzjustElias/FastMathMod/",
+		"sources": "https://github.com/ItzjustElias/FastMathMod/"
 	},
 	"license": "MIT",
 	"icon": "assets/superfastmath/icon.png",
