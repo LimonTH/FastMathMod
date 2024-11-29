@@ -1,0 +1,11 @@
+{
+  "required": true,
+  "package": "org.elias.fastmath.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "MathMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+	}
+}
