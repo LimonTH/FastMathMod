@@ -1,5 +1,7 @@
 package org.elias.fastmath;
 
+import org.apache.commons.math3.util.FastMath;
+
 public class MathUtil {
     private static final int INITIAL_TABLE_SIZE = 4096;
     private static float[] trigTable;
@@ -10,7 +12,8 @@ public class MathUtil {
         trigTable = new float[tableSize];
         radToIndex = tableSize / (2.0f * (float) Math.PI);
         for (int j = 0; j < tableSize; ++j) {
-            trigTable[j] = toFloat(Math.sin(j * 2.0 * Math.PI / tableSize));
+            // Using FastMath for more accurate and fast sin calculation
+            trigTable[j] = toFloat(FastMath.sin(j * 2.0 * Math.PI / tableSize));
         }
     }
 
@@ -20,7 +23,11 @@ public class MathUtil {
             initialize(INITIAL_TABLE_SIZE);  // Initialize with default size if not already initialized
         }
         int sinIndex = (int) (radians * radToIndex) & (trigTable.length - 1);
-        int cosIndex = (int) (radians * radToIndex + (float) trigTable.length / 4) & (trigTable.length - 1);
+        // Correcting the cosine index calculation to avoid negative values
+        int cosIndex = (int) ((radians * radToIndex + trigTable.length / 4.0) % trigTable.length);
+        if (cosIndex < 0) {
+            cosIndex += trigTable.length;
+        }
         return new float[]{trigTable[sinIndex], trigTable[cosIndex]};
     }
 
