@@ -1,6 +1,6 @@
 package org.elias.fastmath.mixin;
 
-import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.*;
 import org.elias.fastmath.MathUtil;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
